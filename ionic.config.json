@@ -1,6 +1,8 @@
 {
   "name": "easy-move",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "1b894811"
 }
