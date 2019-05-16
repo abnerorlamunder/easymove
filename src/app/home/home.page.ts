@@ -13,6 +13,8 @@ import {
   MyLocation
 } from '@ionic-native/google-maps';
 
+import { HTTP } from '@ionic-native/http/ngx';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -20,6 +22,7 @@ import {
 })
 export class HomePage implements OnInit {
 
+  
   map: GoogleMap;
   loading: any;
 
@@ -29,7 +32,11 @@ export class HomePage implements OnInit {
   constructor(
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    private platform: Platform) { }
+    private platform: Platform, private uberService: UberService) {
+      //uberService.estimate();
+    }
+
+    
 
   initializeItems() {
     this.goalList = [
@@ -45,7 +52,7 @@ export class HomePage implements OnInit {
 
   filterList(evt) {
 
-    this.GoogleAutocomplete = new AutocompleteService();
+    // this.GoogleAutocomplete = new AutocompleteService();
 
     this.initializeItems();
 
