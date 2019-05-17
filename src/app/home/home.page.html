@@ -10,7 +10,20 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-content [scrollEvents]="true" (ionScrollStart)="logScrollStart()" (ionScroll)="logScrolling($event)"
+    (ionScrollEnd)="logScrollEnd()">
+    <ion-label>Boa noite, Abner</ion-label>
+    <!-- <ion-input placeholder="Para onde deseja ir?"></ion-input> -->
+    <ion-searchbar placeholder="Para onde deseja ir?" showcancelbutton="" (ionInput)="filterList($event)">
+    </ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let item of goalList">
+        <ion-label (click)="selecionarRota(item.goalName)">{{ item.goalName }}</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-button ion-button (click)="onButtonClick()">Localizar</ion-button>
+  </ion-content>
+  
   <div id="map_canvas">
     <!-- <div id="searchTest"> -->
     <!-- <ion-input placeholder="Para onde deseja ir?"></ion-input> -->
@@ -42,17 +55,4 @@
     </ion-card-content>
   </ion-card> -->
 
-  <ion-content [scrollEvents]="true" (ionScrollStart)="logScrollStart()" (ionScroll)="logScrolling($event)"
-    (ionScrollEnd)="logScrollEnd()">
-    <ion-label>Boa noite, Abner</ion-label>
-    <!-- <ion-input placeholder="Para onde deseja ir?"></ion-input> -->
-    <ion-searchbar placeholder="Para onde deseja ir?" showcancelbutton="" (ionInput)="filterList($event)">
-    </ion-searchbar>
-    <ion-list>
-      <ion-item *ngFor="let item of goalList">
-        <ion-label (click)="selecionarRota(item.goalName)">{{ item.goalName }}</ion-label>
-      </ion-item>
-    </ion-list>
-    <ion-button ion-button (click)="onButtonClick()">Localizar</ion-button>
-  </ion-content>
 </ion-content>

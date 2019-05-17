@@ -32,7 +32,7 @@ export class HomePage implements OnInit {
   constructor(
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    private platform: Platform, private uberService: UberService) {
+    private platform: Platform) {
       //uberService.estimate();
     }
 
