@@ -11,48 +11,71 @@
 
 <ion-content padding>
   <ion-content [scrollEvents]="true" (ionScrollStart)="logScrollStart()" (ionScroll)="logScrolling($event)"
-    (ionScrollEnd)="logScrollEnd()">
+    (ionScrollEnd)="logScrollEnd()" *ngIf="estado === 1">
     <ion-label>Boa noite, Abner</ion-label>
     <!-- <ion-input placeholder="Para onde deseja ir?"></ion-input> -->
     <ion-searchbar placeholder="Para onde deseja ir?" showcancelbutton="" (ionInput)="filterList($event)">
     </ion-searchbar>
     <ion-list>
-      <ion-item *ngFor="let item of goalList">
-        <ion-label (click)="selecionarRota(item.goalName)">{{ item.goalName }}</ion-label>
+      <ion-item *ngFor="let item of rotas" (click)="selecionarRota(item)">
+        <ion-label>{{ item.titulo }}</ion-label>
+        <ion-label>{{ item.endereco }}</ion-label>
       </ion-item>
     </ion-list>
-    <ion-button ion-button (click)="onButtonClick()">Localizar</ion-button>
-  </ion-content>
-  
-  <div id="map_canvas">
-    <!-- <div id="searchTest"> -->
-    <!-- <ion-input placeholder="Para onde deseja ir?"></ion-input> -->
-    <!-- </div> -->
     <!-- <ion-button ion-button (click)="onButtonClick()">Localizar</ion-button> -->
-  </div>
-  <!-- <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-      <ion-card-title>Card Title</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-item>
-      <ion-icon name="pin" slot="start"></ion-icon>
-      <ion-label>ion-item in a card, icon left, button right</ion-label>
-      <ion-button fill="outline" slot="end">View</ion-button>
-    </ion-item>
-
-    <ion-card-content>
-      This is content, without any paragraph or header tags,
-      within an ion-card-content element.
-    </ion-card-content>
-  </ion-card> -->
-
+  </ion-content>
+  <ion-content [scrollEvents]="true" (ionScrollStart)="logScrollStart()" (ionScroll)="logScrolling($event)"
+    (ionScrollEnd)="logScrollEnd()" *ngIf="estado === 2">
+    <ion-label>Buscando sua localização...</ion-label>
+  </ion-content>
+  <ion-content [scrollEvents]="true" (ionScrollStart)="logScrollStart()" (ionScroll)="logScrolling($event)"
+    (ionScrollEnd)="logScrollEnd()" *ngIf="estado === 3">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label>Categoria: </ion-label>
+          <ion-icon *ngIf="requisicao.categoria >= 1" name="star"></ion-icon>
+          <ion-icon *ngIf="requisicao.categoria >= 2" name="star"></ion-icon>
+          <ion-icon *ngIf="requisicao.categoria >= 3" name="star"></ion-icon>
+          <ion-icon *ngIf="requisicao.categoria >= 4" name="star"></ion-icon>
+          <ion-icon *ngIf="requisicao.categoria >= 5" name="star"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Origem: {{requisicao.enderecoOrigem}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Destino: {{requisicao.enderecoDestino}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card *ngFor="let solicitacao of solicitacoes">
+      <ion-card-header>
+        <ion-card-title>{{solicitacao.plataforma}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              {{solicitacao.valor.toFixed(2)}}$
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Tempo de espera: {{secondsToHms(solicitacao.tempoPrevisto)}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Chegada prevista: {{solicitacao.tempoViagem}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <!-- <div style="height: 300px;" id="map_canvas"></div> -->
+  </ion-content>
 </ion-content>

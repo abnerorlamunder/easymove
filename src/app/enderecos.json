@@ -1,0 +1,66 @@
+{
+    "enderecos": [
+        {
+            "titulo": "Unisociesc Marques de Olinda",
+            "endereco" : "R. Gothard Kaesemodel, 833 - Anita Garibaldi, Joinville - SC, 89203-400",
+            "latitude": -26.31915355,
+            "longitude": -48.85512424
+        },
+        {
+            "titulo": "Shopping Mueller",
+            "endereco" : "R. Sen. Felipe Schmidt, 235 - Centro, Joinville - SC, 89201-440",
+            "latitude": -26.3039007,
+            "longitude": -48.84909284
+
+        },
+        {
+            "titulo": "Parque Opa",
+            "endereco" : "R. Max Colin, 1589 - América, Joinville - SC, 89204-635",
+            "latitude": -26.29462925,
+            "longitude": -48.85431007
+        },
+        {
+            "titulo": "Garten Shopping",
+            "endereco" : "Av. Rolf Wiest, 333 - Bom Retiro, Joinville - SC, 89223-005",
+            "latitude": -26.2538027,
+            "longitude":-48.85328455
+        },
+        {
+            "titulo": "Unisociesc Boa Vista",
+            "endereco" : "R. Albano Schmidt, 3333 - Boa Vista, Joinville - SC, 89206-001",
+            "latitude": -26.28850855,
+            "longitude": -48.81335555
+        },
+        {
+            "titulo": "Auto Posto BR Bucarein",
+            "endereco" : "R. Anita Garibaldi, 1099 - Anita Garibaldi, Joinville - SC, 89203-300",
+            "latitude": -26.32277734,
+            "longitude": -48.85371334
+        },
+        {
+            "titulo": "Cafe Show",
+            "endereco": "Av. Cel. Procópio Gomes, 888 - Bucarein, Joinville - SC, 89202-300",
+            "latitude": -26.3139342,
+            "longitude": -48.8412308
+        },
+        {
+            "titulo": "Hospital Dona Helena",
+            "endereco": "R. Blumenau, 123 - Centro, Joinville - SC, 89204-250",
+            "latitude": -26.29904075,
+            "longitude": -26.29904075
+        },
+        {
+            "titulo": "Hospital Municipal São José",
+            "endereco": "R. Dr. Plácido Gomes, 488 - Anita Garibaldi, Joinville - SC, 89202-000",
+            "latitude": -26.3106811,
+            "longitude": -48.8502335
+        },
+        {
+            "titulo": "Havan Joinville",
+            "endereco": "Av. Cel. Procópio Gomes, 249 - Bucarein, Joinville - SC, 89202-300",
+            "latitude": -26.30852816,
+            "longitude": -48.84043582         
+
+        }
+    ]
+}
