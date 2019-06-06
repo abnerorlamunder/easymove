@@ -123,6 +123,7 @@ export class HomePage implements OnInit {
       }
 
       this.solicitacoes = [];
+      
       this.easyMoveApi.buscar4Move(location.latLng.lat, rota.latitude, location.latLng.lng, rota.longitude, categoria).then(res => {
         this.solicitacoes.push(res);
       });

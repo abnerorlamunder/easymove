@@ -10,6 +10,9 @@
 </ion-header>
 
 <ion-content padding>
+  <div style="width: 10%; height: 10%;">
+      <ion-content style="width:50px"><ion-img src="../resources/logo_easymove.png"></ion-img></ion-content>
+  </div>
   <ion-content [scrollEvents]="true" (ionScrollStart)="logScrollStart()" (ionScroll)="logScrolling($event)"
     (ionScrollEnd)="logScrollEnd()" *ngIf="estado === 1">
     <ion-label>Boa noite, Abner</ion-label>
