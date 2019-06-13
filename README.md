@@ -1,0 +1,1 @@
+ionic cordova run browser --livereload --address 0.0.0.0

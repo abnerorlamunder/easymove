@@ -9,13 +9,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <div style="width: 10%; height: 10%;">
-      <ion-content style="width:50px"><ion-img src="../resources/logo_easymove.png"></ion-img></ion-content>
-  </div>
-  <ion-content [scrollEvents]="true" (ionScrollStart)="logScrollStart()" (ionScroll)="logScrolling($event)"
-    (ionScrollEnd)="logScrollEnd()" *ngIf="estado === 1">
-    <ion-label>Boa noite, Abner</ion-label>
+    <ion-img padding src="./assets/logo_easymove.png" style="width:300px"></ion-img>
+  <ion-content *ngIf="estado === 1">
+    <ion-label padding>Boa noite, Abner</ion-label>
     <!-- <ion-input placeholder="Para onde deseja ir?"></ion-input> -->
     <ion-searchbar placeholder="Para onde deseja ir?" showcancelbutton="" (ionInput)="filterList($event)">
     </ion-searchbar>
@@ -27,13 +23,13 @@
     </ion-list>
     <!-- <ion-button ion-button (click)="onButtonClick()">Localizar</ion-button> -->
   </ion-content>
-  <ion-content [scrollEvents]="true" (ionScrollStart)="logScrollStart()" (ionScroll)="logScrolling($event)"
-    (ionScrollEnd)="logScrollEnd()" *ngIf="estado === 2">
+  <ion-content *ngIf="estado === 2">
     <ion-label>Buscando sua localização...</ion-label>
+    <ion-button padding (click)="Cancelar()">Cancelar</ion-button>
   </ion-content>
-  <ion-content [scrollEvents]="true" (ionScrollStart)="logScrollStart()" (ionScroll)="logScrolling($event)"
-    (ionScrollEnd)="logScrollEnd()" *ngIf="estado === 3">
-    <ion-grid>
+  <ion-content *ngIf="estado === 3">
+    <ion-button padding (click)="Cancelar()">Cancelar</ion-button>
+    <ion-grid padding>
       <ion-row>
         <ion-col>
           <ion-label>Categoria: </ion-label>
@@ -81,4 +77,3 @@
     </ion-card>
     <!-- <div style="height: 300px;" id="map_canvas"></div> -->
   </ion-content>
-</ion-content>

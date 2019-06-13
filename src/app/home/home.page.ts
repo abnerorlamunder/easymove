@@ -36,6 +36,8 @@ export class HomePage implements OnInit {
   requisicao = {};
   solicitacoes: RetornoBusca[] = []
 
+  checkSumSolicitacao: string;
+
   constructor(
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
@@ -110,6 +112,13 @@ export class HomePage implements OnInit {
     ]
   }
 
+  Cancelar() {
+    this.estado = 1;
+    this.solicitacoes = [];
+    this.requisicao = {};
+    this.filterList(null);
+  }
+
   selecionarRota(rota) {
     this.estado = 2;
     let categoria = 2;
@@ -123,17 +132,26 @@ export class HomePage implements OnInit {
       }
 
       this.solicitacoes = [];
-      
-      this.easyMoveApi.buscar4Move(location.latLng.lat, rota.latitude, location.latLng.lng, rota.longitude, categoria).then(res => {
-        this.solicitacoes.push(res);
+
+      this.checkSumSolicitacao = Guid.newGuid();
+
+      this.easyMoveApi.buscar4Move(location.latLng.lat, rota.latitude, location.latLng.lng, rota.longitude, categoria, this.checkSumSolicitacao).then(res => {
+        if (res.guidSolicitacao == this.checkSumSolicitacao) {
+          this.solicitacoes.push(res);
+        }
       });
-      this.easyMoveApi.buscar99Pop(location.latLng.lat, rota.latitude, location.latLng.lng, rota.longitude, categoria).then(res => {
-        this.solicitacoes.push(res);
+      this.easyMoveApi.buscar99Pop(location.latLng.lat, rota.latitude, location.latLng.lng, rota.longitude, categoria, this.checkSumSolicitacao).then(res => {
+        if (res.guidSolicitacao == this.checkSumSolicitacao) {
+          this.solicitacoes.push(res);
+        }
       });
-      this.easyMoveApi.buscarUber(location.latLng.lat, rota.latitude, location.latLng.lng, rota.longitude, categoria).then(res => {
-        this.solicitacoes.push(res);
+      this.easyMoveApi.buscarUber(location.latLng.lat, rota.latitude, location.latLng.lng, rota.longitude, categoria, this.checkSumSolicitacao).then(res => {
+        if (res.guidSolicitacao == this.checkSumSolicitacao) {
+          this.solicitacoes.push(res);
+        }
       });
     }).catch(err => {
+      debugger
       alert(err);
     });
   }
@@ -152,6 +170,10 @@ export class HomePage implements OnInit {
 
   filterList(evt) {
 
+    if (!evt) {
+      this.rotas = [];
+      return;
+    }
     // this.GoogleAutocomplete = new AutocompleteService();
 
     this.initializeItems();
@@ -244,5 +266,14 @@ export class HomePage implements OnInit {
     });
 
     toast.present();
+  }
+}
+
+class Guid {
+  static newGuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
   }
 }

@@ -9,21 +9,21 @@ export class EasymoveapiService {
 
   constructor() { }
 
-  buscarUber(lat1, lat2, long1, long2, categoria): Promise<RetornoBusca> {
+  buscarUber(lat1, lat2, long1, long2, categoria, guid): Promise<RetornoBusca> {
     return new Promise(res => setTimeout(res, this.randomIntFromInterval(3000, 9000))).then(res => {
-      return Promise.resolve(new RetornoBusca('Uber', this.getValorRandom(3.2, lat1, lat2, long1, long2), this.getTempoEsperaRandom(categoria), this.getTempoViagem(lat1, lat2, long1, long2), categoria));
+      return Promise.resolve(new RetornoBusca('Uber', this.getValorRandom(3.2, lat1, lat2, long1, long2), this.getTempoEsperaRandom(categoria), this.getTempoViagem(lat1, lat2, long1, long2), categoria, guid));
     });
   }
 
-  buscar4Move(lat1, lat2, long1, long2, categoria): Promise<RetornoBusca> {
+  buscar4Move(lat1, lat2, long1, long2, categoria, guid): Promise<RetornoBusca> {
     return new Promise(res => setTimeout(res, this.randomIntFromInterval(3000, 9000))).then(res => {
-      return Promise.resolve(new RetornoBusca('4Move', this.getValorRandom(3, lat1, lat2, long1, long2), this.getTempoEsperaRandom(categoria), this.getTempoViagem(lat1, lat2, long1, long2), categoria));
+      return Promise.resolve(new RetornoBusca('4Move', this.getValorRandom(3, lat1, lat2, long1, long2), this.getTempoEsperaRandom(categoria), this.getTempoViagem(lat1, lat2, long1, long2), categoria, guid));
     });
   }
 
-  buscar99Pop(lat1, lat2, long1, long2, categoria): Promise<RetornoBusca> {
+  buscar99Pop(lat1, lat2, long1, long2, categoria, guid): Promise<RetornoBusca> {
     return new Promise(res => setTimeout(res, this.randomIntFromInterval(3000, 9000))).then(res => {
-      return Promise.resolve(new RetornoBusca('99Pop', this.getValorRandom(2.5, lat1, lat2, long1, long2), this.getTempoEsperaRandom(categoria), this.getTempoViagem(lat1, lat2, long1, long2), categoria));
+      return Promise.resolve(new RetornoBusca('99Pop', this.getValorRandom(2.5, lat1, lat2, long1, long2), this.getTempoEsperaRandom(categoria), this.getTempoViagem(lat1, lat2, long1, long2), categoria, guid));
     });
   }
 
